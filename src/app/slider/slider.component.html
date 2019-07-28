@@ -1,0 +1,37 @@
+<h3>Products</h3>
+<div class="container">
+  <div *ngIf="isVisible" class="loader"></div>
+<div class="row">
+    <div *ngFor="let product of products" style="padding: 1%">
+<div class=".col-md-4 card">
+    <img src="./assets/macbook-air.jpg" height="200" width="200" alt="Italian Trulli">
+    <div class="caption clearfix">
+            <h5><a href="#">{{product.title}}</a></h5>
+            <div class="product__price">{{product.authors}}</div>
+            <div class="product__price">Rating {{product.average_rating}}</div>
+            <div class="product__price">Isbn {{product.isbn}}</div>
+            <div class="product__price">Language: {{product.language_code}}</div>
+            <div class="product__price">Rs. {{product.price}}</div>
+            <div class="product__button-wrap">
+                <button class="btn btn-primary" (click)="Buy()">Buy</button>
+                <button class="btn btn-primary"   (click)="AddProduct(product)">Add to Cart</button>
+    <!--<button class="btn btn-primary"   >Item Added to Cart!</button>-->
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<!--<div class="thumbnail" *ngFor="let product of products">
+        <img src={{product.url}} class="fixwidth" alt="product image" />
+        <div class="caption clearfix">
+          <h5><a href={{product.url}}>{{product.name}}</a></h5>
+          <div class="product__price">{{product.price}} {{product.currency}}</div>
+          <div class="product__button-wrap">
+            <button    (click)="RemoveProduct(product)" class="btn btn-primary">Remove
+            </button>
+            <button    (click)="AddProduct(product)" class="btn btn-primary">Add to cart
+             </button>
+          </div>
+        </div>
+      </div>-->

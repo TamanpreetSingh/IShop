@@ -1,0 +1,78 @@
+<div>
+  
+    <form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">
+  <div>
+  <h1>CheckOut</h1>
+  </div>
+  <div style="padding:10%">
+    <div>
+      <h3>Personal Details</h3>
+      <label for="username">Name:</label>
+      <input disabled type="text" class="form-control" value="{{currentUser.firstName}} {{currentUser.lastName}}"/>
+      <label for="email">Email:</label>
+      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+      </div>
+      <label for="phone">Phone No:</label>
+      <input type="number" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+      <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+          <div *ngIf="f.phone.errors.required">Phone No is required</div>
+      </div>
+    </div>
+    <div>
+      <h3>Delivary Address</h3>
+      <label for="address">Address:</label>
+      <input type="text"formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+      <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+          <div *ngIf="f.address.errors.required">Address is required</div>
+      </div>
+      <label for="pin">Pin Code:</label>
+      <input type="number" formControlName="pin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }"/>
+      <div *ngIf="submitted && f.pin.errors" class="invalid-feedback">
+          <div *ngIf="f.pin.errors.required">Pin Code is required</div>
+      </div>
+      <label for="state">State:</label>
+      <input type="text" formControlName="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.state.errors }"/>
+      <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+          <div *ngIf="f.state.errors.required">State is required</div>
+      </div>
+      <label for="city">City:</label>
+      <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }"/>
+      <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">City is required</div>
+      </div>
+    </div>
+    <div>
+      <h3>Order Summery</h3>
+      <div *ngFor="let product of products" style="padding: 1%">
+          <div class=".col-md-6 card">
+              <img src="./assets/macbook-air.jpg" height="200" width="200" alt="Italian Trulli">
+              <div class="caption clearfix">
+                      <h5><a href="#">{{product.title}}</a></h5>
+                      <div class="product__price">Rs. {{product.price}}</div>
+                      <div class="product__button-wrap">
+                      <div>
+                          Quantity:{{product.quantity}}
+                      </div>
+              </div>
+              </div>
+          </div> 
+        </div>
+    </div>
+    <div>
+        Total:{{sum}}
+    </div>
+    <div>
+      <h3>Payment Options</h3>
+
+      <input type="radio"  value="credit" formControlName="payment" name="payment"  class="radio">Credit/Debit Card<br>
+      <input type="radio"  value="net" formControlName="payment" name="payment"  class="radio">Net Banking<br>
+      <input type="radio"  value="COD" formControlName="payment" name="payment"  class="radio">Cash on Delivery
+    </div>
+    <div>
+        <button class="btn btn-primary">Confirm Order</button> 
+    </div>
+  </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div *ngIf="show">
+  <h1>Looks like you are not Signed In!</h1>
+  <div>
+    <button class="btn btn-primary"  (click)="signin()">Sign In</button>
+  </div>
+</div>
+<div *ngIf="hide">
+    <h3>Cart Products</h3>
+    <div class="container">
+    <div class="row">
+      <div *ngIf="flag">
+        <h4>No Items in Cart</h4>
+        <a class="btn btn-primary" href="home">Shop</a>
+      </div>
+        <div *ngFor="let product of products" style="padding: 1%">
+    <div class=".col-md-4 card">
+        <img src="./assets/macbook-air.jpg" height="200" width="200" alt="Italian Trulli">
+        <div class="caption clearfix">
+                <h5><a href="#">{{product.title}}</a></h5>
+                <div class="product__price">{{product.authors}}</div>
+                <div class="product__price">Rating {{product.average_rating}}</div>
+                <div class="product__price">Isbn {{product.isbn}}</div>
+                <div class="product__price">Language: {{product.language_code}}</div>
+                <div class="product__price">Rs. {{product.price}}</div>
+                <div class="product__button-wrap">
+                    <button class="btn btn-primary"   *ngIf="!product.added"(click)="AddProduct(product)">Add to Cart</button>
+        <button class="btn btn-alert"   (click)="removeProduct(product)">Remove From Cart</button>
+        <!--Quantity:-->
+     <!-- <button (click)="increase(product,counterValue)">+</button> {{counterValue}} <button (click)="decrease(product,counterValue)">-</button>-->
+        <!--<div (onclick)="decreaseValue()" class="value-button">-</div>
+        <input value="1" #inputstring type="number" (onkeyup)="addQuantity(product,inputstring.value)">
+        <div (onclick)="increaseValue()" class="value-button">-</div>-->
+        </div>
+        </div>
+    </div> 
+  </div>
+  
+    </div>
+    <div *ngIf="!flag">
+      <div>
+        Total:{{sum}}
+      </div>
+      <div>
+          <a class="btn btn-primary"   href="checkout">CheckOut</a>
+      </div>
+    </div>
+    </div>
+    
+    
+</div>

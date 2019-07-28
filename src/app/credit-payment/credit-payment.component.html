@@ -1,0 +1,27 @@
+<div>
+    <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+  <div>
+    <h3>Credit/Debit Card Details</h3>
+    <div>
+      <label for="number">Card Number:</label>
+      <input type="text"formControlName="number" class="form-control" placeholder="Card Number" [ngClass]="{ 'is-invalid': submitted && f.number.errors }"/>
+      <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+          <div *ngIf="f.number.errors.required">Card Number is required</div>
+      </div>
+      <label for="expiry">Expiry Date:</label>
+      <input type="text" formControlName="expiry" class="form-control" placeholder="MM/YYYY" [ngClass]="{ 'is-invalid': submitted && f.expiry.errors }"/>
+      <div *ngIf="submitted && f.expiry.errors" class="invalid-feedback">
+          <div *ngIf="f.expiry.errors.required">Expiry Date is required</div>
+      </div>
+      <label for="cvv">CVV:</label>
+      <input type="password" minlength="3" maxlength="3" formControlName="cvv" class="form-control" placeholder="cvv" [ngClass]="{ 'is-invalid': submitted && f.cvv.errors }"/>
+      <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
+          <div *ngIf="f.cvv.errors.required">Cvv is required</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-primary">Place Order</button> 
+  </div>
+  </form>
+</div>
